@@ -1,20 +1,19 @@
-name: Deploy to cPanel
+name: deployscp
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  deploy:    
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.1.0
+      - uses: actions/checkout@v2
+      - name: Deploy source-code
+        uses: appleboy/scp-action@0.1.4
         with:
-          fetch-depth: 2
-      # Deploy to cPanel
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: 22
+          KEY: ${{ secrets.SSH_KEY }}
+          source: "*"
+          target: "/public_html/demo6.conscor.com/"
