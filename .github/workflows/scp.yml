@@ -9,8 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy source-code
-        uses: appleboy/scp-action@v0.1.4
-        with:
+        image: appleboy/drone-scp
+         settings:
           HOST: ${{ secrets.SSH_HOST }}
           USERNAME: ${{ secrets.SSH_USERNAME }}
           PORT: 22
@@ -18,4 +18,4 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "*"
           target: "/public_html/demo6.conscor.com/"
-          
+
