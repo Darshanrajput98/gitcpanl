@@ -9,8 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy source-code
-        image: appleboy/drone-scp
-         settings:
+        uses: appleboy/scp-action@v0.1.4
+        with:
           HOST: ${{ secrets.SSH_HOST }}
           USERNAME: ${{ secrets.SSH_USERNAME }}
           PORT: 22
