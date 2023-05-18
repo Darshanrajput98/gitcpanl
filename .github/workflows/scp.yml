@@ -1,19 +1,20 @@
-name: test-deployer
-
+name: deployscp
 on:
   push:
     branches: [ master ]
-#  pull_request:
-#    branches: [ main ]
-
-  workflow_dispatch:
 
 jobs:
-  # This workflow will run inside the prod server and will deploy the application
-  deploy-to-server:
-    runs-on: self-hosted
+  deploy:    
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: copy files to server
-        run: sudo rsync -av --exclude='.htaccess' ./ /public_html/demo6.conscor.com/
-      
+      - name: Deploy source-code
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: 22
+          KEY: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "*"
+          target: "/public_html/demo6.conscor.com/"
