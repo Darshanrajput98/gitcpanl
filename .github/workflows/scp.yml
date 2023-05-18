@@ -1,1 +1,19 @@
+name: test-deployer
 
+on:
+  push:
+    branches: [ master ]
+#  pull_request:
+#    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  # This workflow will run inside the prod server and will deploy the application
+  deploy-to-server:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: copy files to server
+        run: sudo rsync -av --exclude='.htaccess' ./ /public_html/demo6.conscor.com/
+      
