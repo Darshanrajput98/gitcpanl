@@ -15,5 +15,6 @@ jobs:
           USERNAME: ${{ secrets.SSH_USERNAME }}
           PORT: 22
           KEY: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           source: "*"
           target: "/public_html/demo6.conscor.com/"
