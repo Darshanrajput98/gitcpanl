@@ -17,4 +17,4 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "*"
-          target: "/public_html/demo6.conscor.com/"
+          target: "/public_html/demo6.conscor.com/*"
