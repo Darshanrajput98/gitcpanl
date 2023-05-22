@@ -1,20 +1,20 @@
-on: 
- push:
-   branches: [ master ]
-name: 🚀 Deploy website on push
+name: deployscp
+on:
+  push:
+    branches: [ master ]
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: 88.99.164.225
-        username: demo6@demo6.conscor.com
-        password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftps
-        port: 21
+    deploy_job:
+     runs-on: ubuntu-latest
+     name: deploy
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: deploy file
+         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+         with:
+             username: 'demo3'
+             server: '88.99.164.225'
+             ssh_private_key: ${{ secrets.SSH_KEY }}
+             local_path: '*'
+             remote_path: "/public_html/demo6.conscor.com/"
+             sftpArgs: '-o ConnectTimeout=5'
