@@ -15,6 +15,7 @@ jobs:
              username: 'demo3'
              server: '88.99.164.225'
              ssh_private_key: ${{ secrets.SSH_KEY }}
+             passphrase: ${{ secrets.PASSPHRASE }}
              local_path: '*'
              remote_path: "/public_html/demo6.conscor.com/"
              sftpArgs: '-o ConnectTimeout=5'
