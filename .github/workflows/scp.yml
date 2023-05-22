@@ -16,5 +16,6 @@ jobs:
         server: 88.99.164.225
         username: demo6@demo6.conscor.com
         password: ${{ secrets.FTP_PASSWORD }}
-        protocol: sftp
+        protocol: ftps
+        METHOD: sftp
         port: 21
