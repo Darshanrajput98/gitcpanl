@@ -2,20 +2,21 @@ name: deployscp
 on:
   push:
     branches: [ master ]
+
 jobs:
-    deploy_job:
-     runs-on: ubuntu-latest
-     name: deploy
-     steps:
-       - name: Checkout
-         uses: actions/checkout@v2
-       - name: deploy file
-         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-         with:
-             username: 'demo3'
-             server: '88.99.164.225'
-             ssh_private_key: ${{ secrets.SSH_KEY }}
-             passphrase: ${{ secrets.PASSPHRASE }}
-             local_path: '*'
-             remote_path: "/public_html/demo6.conscor.com/"
-             sftpArgs: '-o ConnectTimeout=5'
+  deploy_job:
+    runs-on: ubuntu-latest
+    name: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+            username: demo6@demo6.conscor.com
+            server: 88.99.164.225
+            port: 21
+            local_path: '*'
+            remote_path: '/public_html/demo6.conscor.com/'
+            sftp_only: true
+            password: ${{ secrets.FTP_PASSWORD }}
