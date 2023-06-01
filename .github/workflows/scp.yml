@@ -14,7 +14,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: 3.110.32.0
-        username: ec2-3-110-32-0.ap-south-1.compute.amazonaws.com
+        username: Testweb
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
         port: 21
