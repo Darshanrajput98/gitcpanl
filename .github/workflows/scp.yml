@@ -13,8 +13,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: 88.99.164.225
-        username: demo6@demo6.conscor.com
+        server: 3.110.32.0
+        username: ec2-3-110-32-0.ap-south-1.compute.amazonaws.com
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
         port: 21
