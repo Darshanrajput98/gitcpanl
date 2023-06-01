@@ -18,3 +18,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
         port: 21
+        server-dir: C:\Users\Administrator\Desktop\FTP
