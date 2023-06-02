@@ -13,9 +13,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: 3.111.150.192
-        username: FtpUser
-        password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftps
-        port: 21
+        server: 65.0.31.84
+        username: Administrator
+        password: oLvEVGRa*c@XDK!AA!Vag6M5k1wH38T&
+        port: 22
         server-dir: C:\Users\Administrator\Desktop\FTP/
